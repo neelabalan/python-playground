@@ -1,2 +1,4 @@
-# pythonprogs
-python code snippets
+# python-playground
+
+just experimenting here
+
