@@ -1,0 +1,18 @@
+version: '3'
+services:
+  flask:
+    build:
+      context: ./app/
+      dockerfile: Dockerfile
+    image: flask-user
+    ports:
+      - "81:5000"
+    entrypoint: python /app/app.py
+    depends_on:
+      - mongodb
+
+  mongodb:
+    image: mongo:4.0.8
+    container_name: mongodb
+    restart: unless-stopped
+
