@@ -4,6 +4,8 @@ services:
     build:
       context: ./
     image: flask-user
+    environment:
+      ENV: prod
     ports:
       - "81:5000"
     entrypoint: python /app/app.py
@@ -25,9 +27,11 @@ services:
     ports:
       - 5053:5053
     environment:
-      APPLICATION_PORT: 5053
-      APPLICATION_DB_CONTAINER: testdb
+      ENV: dev 
+      # APPLICATION_PORT: 5053
+      # APPLICATION_DB_CONTAINER: testdb
     command: python -m pytest . 
 
   testdb:
     image: mongo:4.0.8 
+    container_name: testdb

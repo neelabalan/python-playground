@@ -1,9 +1,15 @@
 import json
+import os
+import configparser
+
 from flask import Flask, request, Response
 from pymongo import MongoClient, errors
 
 app = Flask(__name__)
-client = MongoClient('mongodb', 27017)
+config = configparser.ConfigParser()
+config.read('config.ini')
+
+client = MongoClient(config[os.getenv('ENV')]['db'], 27017)
 db = client.db
 users =  db.users
 
