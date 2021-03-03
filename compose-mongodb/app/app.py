@@ -62,5 +62,8 @@ def delete_user(userid):
     return success_response('delete successful', status=200, mimetype='application/json')
 
 
+def print_hello():
+    print('hello')
+
 if __name__ == "__main__":
     app.run(debug=True, host='0.0.0.0', port=5000)
