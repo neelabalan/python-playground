@@ -1,0 +1,39 @@
+import dash
+import dash_core_components as dcc
+import dash_html_components as html
+import plotly.express as px
+import pandas as pd
+import time
+external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
+
+app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
+
+df = pd.read_csv('stats.csv') 
+# DataFrame({
+    # "Fruit": ["Apples", "Oranges", "Bananas", "Apples", "Oranges", "Bananas"],
+    # "Amount": [4, 1, 2, 2, 4, 5],
+    # "City": ["SF", "SF", "SF", "Montreal", "Montreal", "Montreal"]
+# })
+
+fig = px.bar(df, x="keystroke", y="frequency", barmode="group")
+
+app.layout = html.Div(children=[
+    html.H1(children='Hello Dash'),
+
+    html.Div(children='''
+        Dash: A web application framework for Python.
+    '''),
+
+    dcc.Graph(
+        id='example-graph',
+        figure=fig
+    )
+])
+# while True:
+    # df.loc[39,'frequency'] += 1
+    # time.sleep(1)
+
+
+
+if __name__ == '__main__':
+    app.run_server(debug=True)
