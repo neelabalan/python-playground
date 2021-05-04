@@ -1,0 +1,5 @@
+# using black for major formatting
+black --skip-string-normalization .
+
+# I like single quotes
+unify --in-place --recursive .
